@@ -1,0 +1,23 @@
+
+ 
+  
+  .activities-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    list-style: none;
+    
+    li {
+      border-radius: 10px;
+      border: 5px solid #fff;
+      box-sizing: border-box;
+      margin-right: 5px;
+      cursor: move;
+      background: #ddd;
+      color: #000;
+    }
+  }
+  
+
+
+  
