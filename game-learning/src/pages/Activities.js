@@ -1,9 +1,10 @@
-import {  useState, useEffect } from "react";
+import {  useState } from "react";
 import "../styles/activities.scss";
 
 function Activities() {
-  const items = [ 'I', 'babe', 'you', "!"]
-  
+  const items = [ ]
+  const [value, setValue] = useState('');
+
   const initialDnDState = {
     draggedFrom: null,
     draggedTo : null,
@@ -11,7 +12,7 @@ function Activities() {
     originalOrder: [],
     updatedOrder: []
   }
-  
+
   const [list, setList] = useState(items)
     const [DnD, setDnD] = useState(initialDnDState)
     const onDragStart = e => {
@@ -58,8 +59,26 @@ function Activities() {
       })
     }
  
+   
+    function handleChange(event) {
+     setValue(event.target.value);
+    }
+
+    const handleSubmit = (event) => {
+        list.push(value)
+      
+  setValue("")
+  
+      event.preventDefault();
+    };
+  
     return (
       <div>
+         <form onSubmit={handleSubmit}>
+        <input type="text" value={value} onChange={handleChange} />
+        <button type="submit">Add Activity</button>
+      </form>
+      
         <ul className="activities-list">
           {list.map((item, i) => (
             <>
@@ -81,7 +100,9 @@ function Activities() {
 
             </div>
             {list.length- 1 === i? null :
-            <input></input>}
+            <input></input>
+            
+            }
           </>
           ))}
           
